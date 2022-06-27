@@ -41,6 +41,23 @@ public class LinkedList01{
                  System.out.println();
 
              }
+             // function to remove first 
+            public void removeFIrst(){
+                 if(this.size==0){
+                    System.out.println("List is empty");
+                 }else if(this.size==1){
+                    this.Head=this.tail=null;
+                    size--;
+
+                 }else{
+                       Node nbr=this.Head.next;
+                       this.Head=null;
+                       this.Head=nbr;
+                       size--;
+
+                 }
+
+            }
      }
     
       
@@ -55,6 +72,8 @@ public class LinkedList01{
            ll.addLast(42);
            ll.addLast(62);
            ll.displayLinkdedList();
+            ll.removeFIrst();
+            ll.displayLinkdedList();
      }
 
 }
