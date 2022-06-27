@@ -31,6 +31,20 @@ public class LinkedList02 {
              System.out.println(this.tail.data);
             }
           }
+          // function to addLast
+           public void addLast(int val){
+              Node node=new Node(val);
+              if(this.size==0){
+                 this.head=node;
+                 this.tail=node;
+                 this.size++;
+              }else{
+                 this.tail.next=node;
+                 this.tail=node;
+                 this.size++;
+              }
+
+           }
           //function to get at index
            public void getAtIndex(int idx){ 
                
@@ -61,7 +75,69 @@ public class LinkedList02 {
                    size++;
 
             }
+            //function to removeFirst
+             public void removeFirst(){
+                if(size==0){
+                    System.out.println("the list is empty");
+                }else if(this.size==1){
+                    this.head=null;
+                    this.tail=null;
+                    this.size--;
+                }else{
+                    Node nbr=this.head.next;
+                     this.head=null;
+                     this.head=nbr;
+                     this.size--;
+                }
 
+             }
+             // remove Last 
+             public void removeLast(){
+                if(this.size==0){
+                System.out.println("list is empty");
+                }else if(this.size==1){
+                     this.head=null;
+                     this.tail=null;
+                     this.size--;
+                }
+                   Node ptr=this.head;
+                  while(ptr.next!=null){
+                     ptr=ptr.next;
+                  }
+                  ptr.next=null;
+                this.tail=ptr;
+                this.size--;
+                 
+             }
+               // Add at index function 
+                 public void addAt(int idx,int val){
+                    if(idx<0||idx>=this.size){
+                        System.out.println("invalid idx");
+                    }
+                    else  if(idx==0){
+                         addFirst(val);
+                    }else if(idx==this.size-1){
+                           addLast(val);
+                    }else {
+                           Node prPointer=null;
+                        Node crPointer=this.head;
+
+                           while(idx!=0){
+                             prPointer=crPointer;
+                             crPointer=crPointer.next;
+                             idx--;
+                           }
+                            Node node=new Node(val);
+                           node.next=crPointer;
+                           prPointer.next=node;
+                           this.size++;
+
+                    }
+                     
+                     
+
+                 }
+              
     }
      public static void main(String[]args){
         LinkedList ll=new LinkedList();
